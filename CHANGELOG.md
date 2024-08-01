@@ -123,3 +123,16 @@
 A new development of Sysmon determining audit inspector as performing process tampering led to "fishing" for what's is the source.  
 Several API calls that are commonly associated with process tampering were removed from `get_service_path` in sysmon.rs.  
 The code is cleaner and easier to read.  
+
+## [0.1.8] - 2024-08-01
+### Improved Error Logging
+Instead of including error messages in the data fields for errors were gerenated, errors are now added to an array in the field `error.message`.  
+Errors are labeled with the field for which they were generated in `error.message`.  
+### Boolean Flags
+The following command line items were converted to boolean flags. These items no longer accept an integer value.  
+- no_configuration
+- uninstall
+### Feature Addition: Remove Auditing
+A feature for removing audit policies was added.  
+This was introduced as a debugging tool.  
+This feature is only available with Rust's developer/debugging mode.  

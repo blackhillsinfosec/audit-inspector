@@ -191,3 +191,40 @@ pub fn get_powershell_module_names() -> Result<Vec<String>> {
     }
     Ok(module_names)
 }
+
+#[cfg(debug_assertions)]
+pub fn remove_audit_registries() {
+
+    match LOCAL_MACHINE.open(PROCESSCREATIONINCLUDECMDLINE_BASE) {
+        Ok(key) => {
+            match key.remove_value(PROCESSCREATIONINCLUDECMDLINE_KEY) {
+                Ok(_) => {
+                    println!("Removed the registries for {}\\{}", PROCESSCREATIONINCLUDECMDLINE_BASE, PROCESSCREATIONINCLUDECMDLINE_KEY)
+                } Err(e) => { println!("{}: {}", PROCESSCREATIONINCLUDECMDLINE_KEY, e.to_string()) }
+            }
+        } Err(_) => { () }
+    }
+
+    match LOCAL_MACHINE.open(SCENOAPPLYLEGACYAUDITPOLICY_BASE) {
+        Ok(key) => {
+            match key.remove_value(SCENOAPPLYLEGACYAUDITPOLICY_KEY){
+                Ok(_) => {
+                    println!("Removed the registries for {}\\{}", SCENOAPPLYLEGACYAUDITPOLICY_BASE, SCENOAPPLYLEGACYAUDITPOLICY_KEY)
+                } Err(e) => { println!("{}: {}", SCENOAPPLYLEGACYAUDITPOLICY_KEY, e.to_string()) }
+            };       
+        } Err(_) => { () }
+    }
+
+    match LOCAL_MACHINE.remove_tree(SCRIPTBLOCKLOGGING_BASE) {
+        Ok(_) => {
+            println!("Removed the registries for {}", SCRIPTBLOCKLOGGING_BASE)
+        } Err(e) => { println!("{}: {}", SCRIPTBLOCKLOGGING_BASE, e.to_string()) }
+    };
+
+    match LOCAL_MACHINE.remove_tree(MODULELOGGING_BASE) {
+        Ok(_) => {
+            println!("Removed the registries for {}", MODULELOGGING_BASE)
+        } Err(e) => { println!("{}: {}", MODULELOGGING_BASE, e.to_string()) }
+    };
+
+}

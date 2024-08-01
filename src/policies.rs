@@ -483,6 +483,18 @@ impl fmt::Display for AuditPolicy {
     }
 }
 
+#[cfg(debug_assertions)]
+pub fn remove_audit_configurations() -> String {
+    let execution = Command::new("auditpol.exe")
+        .arg("/clear")
+        .arg("/y")
+        .current_dir("C:\\Windows\\System32")
+        .output()
+        .expect("Unable to execute get command.");
+    let out_put:String = String::from_utf8_lossy(&execution.stdout).to_string();
+    out_put
+}
+
 mod domain_controllers {
     use windows::{core::*, Win32::System::Com::*, Win32::System::Wmi::*};
     /// Returns true if the localhost is a domain controller.

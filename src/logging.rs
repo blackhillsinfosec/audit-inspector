@@ -27,32 +27,48 @@ fn log_audit_configs(mut log_data: Map<String,Value>, current_audit_config: &Str
         Ok(v) => {
             audit_policy.insert("ProcessCreationIncludeCmdLine_Enabled".to_string(), json!(v));
         }
-        Err(_) => {
-            audit_policy.insert("ProcessCreationIncludeCmdLine_Enabled".to_string(), json!("Could not read the registry ProcessCreationIncludeCmdLine_Enabled."));
+        Err(e) => {
+            if e.to_string().contains("The system cannot find the file specified."){
+                ()
+            } else {
+                log_data = append_error(log_data, "audit_policy.ProcessCreationIncludeCmdLine_Enabled".to_string(), e.to_string());
+            }
         }
     }
     match registries::get_no_apply_legacy_audit() {
         Ok(v) => {
             audit_policy.insert("scenoapplylegacyauditpolicy".to_string(), json!(v));
         }
-        Err(_) => {
-            audit_policy.insert("scenoapplylegacyauditpolicy".to_string(), json!("Could not read the registry scenoapplylegacyauditpolicy."));
+        Err(e) => {
+            if e.to_string().contains("The system cannot find the file specified."){
+                ()
+            } else {
+                log_data = append_error(log_data, "audit_policy.scenoapplylegacyauditpolicy".to_string(), e.to_string());
+            }
         }
     }
     match registries::get_enable_script_block_logging() {
         Ok(v) => {
             audit_policy.insert("EnableScriptBlockLogging".to_string(), json!(v));
         }
-        Err(_) => {
-            audit_policy.insert("EnableScriptBlockLogging".to_string(), json!("Could not read the registry ScriptBlockLogging."));
+        Err(e) => {
+            if e.to_string().contains("The system cannot find the file specified."){
+                ()
+            } else {
+                log_data = append_error(log_data, "audit_policy.EnableScriptBlockLogging".to_string(), e.to_string());
+            }
         }
     }
     match registries::get_enable_script_block_invocation_logging() {
         Ok(v) => {
             audit_policy.insert("EnableScriptBlockInvocationLogging".to_string(), json!(v));
         }
-        Err(_) => {
-            audit_policy.insert("EnableScriptBlockInvocationLogging".to_string(), json!("Could not read the registry ScriptBlockInvocationLogging."));
+        Err(e) => {
+            if e.to_string().contains("The system cannot find the file specified."){
+                ()
+            } else {
+                log_data = append_error(log_data, "audit_policy.EnableScriptBlockInvocationLogging".to_string(), e.to_string());
+            }
         }
     }
     match registries::get_powershell_module_names() {
@@ -61,10 +77,9 @@ fn log_audit_configs(mut log_data: Map<String,Value>, current_audit_config: &Str
         }
         Err(e) => {
             if e.to_string().contains("The system cannot find the file specified."){
-                let empty_vec: Vec<String> = Vec::new();
-                audit_policy.insert("PowershellLoggingModuleNames".to_string(), json!(empty_vec));
+                ()
             } else {
-                audit_policy.insert("PowershellLoggingModuleNames".to_string(), json!("Could not read the powershell logging module names."));
+                log_data = append_error(log_data, "audit_policy.PowershellLoggingModuleNames".to_string(), e.to_string());
             }
         }
     }
@@ -82,7 +97,8 @@ fn log_sysmon_data(mut log_data: Map<String, Value>) -> Map<String, Value> {
         Ok(v) => {
             match v.is_empty(){
                 true => {
-                    service.insert("name".to_string(), json!("No Sysmon binary is installed as a service."));
+                    log_data = append_error(log_data, "service.name".to_string(), "No Sysmon binary is installed as a service.".to_string());
+                    service.insert("name".to_string(), json!(""));
                 }
                 false => {
                     service.insert("name".to_string(), json!(&v.replace("\0","")));
@@ -91,17 +107,20 @@ fn log_sysmon_data(mut log_data: Map<String, Value>) -> Map<String, Value> {
                     match sysmon::get_service_status(&v) {
                         Ok(v) => { 
                             service.insert("state".to_string(), json!(&v)); 
-                            if v.as_str() == "Running" {
-                                
-                            }
                         },
-                        Err(e) => { service.insert("state".to_string(), json!(e.to_string())); }
+                        Err(e) => { 
+                            log_data = append_error(log_data, "service.state".to_string(), e.to_string());
+                            service.insert("state".to_string(), json!(""));
+                        }
                     };
 
                     // Sysmon Version
                     match sysmon::get_sysmon_version() {
                         Ok(v) => { service.insert("version".to_string(), json!(v.to_string())); },
-                        Err(e) => { service.insert("version".to_string(), json!(e.to_string())); }
+                        Err(e) => { 
+                            log_data = append_error(log_data, "service.version".to_string(), e.to_string());
+                            service.insert("version".to_string(), json!("")); 
+                        }
                     }
                     
                     // Sysmon Config
@@ -125,8 +144,9 @@ fn log_sysmon_data(mut log_data: Map<String, Value>) -> Map<String, Value> {
                         }
                     }
                     match config_file.is_empty() {
-                        true => { 
-                            file.insert("path".to_string(), json!("N/A"));
+                        true => {
+                            log_data = append_error(log_data, "file.path".to_string(), "Unable to get the Sysmon config file path.".to_string());
+                            file.insert("path".to_string(), json!(""));
                         },
                         false => {
                             file.insert("path".to_string(), json!(config_file));
@@ -135,7 +155,8 @@ fn log_sysmon_data(mut log_data: Map<String, Value>) -> Map<String, Value> {
                     let mut file_hash = Map::new();
                     match config_hash.is_empty() {
                         true => { 
-                            file_hash.insert("sha256".to_string(), json!("N/A"));
+                            log_data = append_error(log_data, "file.hash.sha256".to_string(), "Unable to get the Sysmon config file hash.".to_string());
+                            file_hash.insert("sha256".to_string(), json!(""));
                             file.insert("hash".to_string(), json!(file_hash));
                         },
                         false => { 
@@ -147,7 +168,8 @@ fn log_sysmon_data(mut log_data: Map<String, Value>) -> Map<String, Value> {
             }
         },
         Err(e) => {
-            service.insert("name".to_string(), json!(e.to_string()));
+            log_data = append_error(log_data, "service.name".to_string(), e.to_string());
+            service.insert("name".to_string(), json!(""));
         }
     }
     // Process Fields
@@ -163,13 +185,17 @@ fn log_sysmon_data(mut log_data: Map<String, Value>) -> Map<String, Value> {
                     process.insert("hash".to_string(), json!(hash));
                 }
                 Err(e) => {
+                    log_data = append_error(log_data, "process.hash.sha256".to_string(), e.to_string());
                     let mut hash = Map::new();
-                    hash.insert("sha256".to_string(), json!(e.to_string()));
+                    hash.insert("sha256".to_string(), json!(""));
                     process.insert("hash".to_string(), json!(hash));
                 }
             }
         },
-        Err(e) => { process.insert("path".to_string(), json!(e.to_string())); }
+        Err(e) => { 
+            log_data = append_error(log_data, "process.path".to_string(), e.to_string());
+            process.insert("path".to_string(), json!(""));
+        }
     }
     log_data.insert("service".to_string(), json!(service));
     log_data.insert("process".to_string(), json!(process));
@@ -179,9 +205,39 @@ fn log_sysmon_data(mut log_data: Map<String, Value>) -> Map<String, Value> {
     log_data
 }
 
+fn append_error(mut log_data: Map<String, Value>, error_association: String, error_mesage: String) -> Map<String, Value> {
+    match log_data.get("error") {
+        Some(message) => {
+            match message.get("message") {
+                Some(array) => {
+                    let mut vec_array = Vec::<String>::new();
+                    for array_element in array.as_array().unwrap().into_iter() {
+                        vec_array.push(array_element.to_string().replace("\"", ""));
+                    }
+                    vec_array.push(format!("[{}] {}", error_association, error_mesage));
+                    if let Some(x) = log_data.get_mut("error"){
+                        if let Some(y) = x.get_mut("message") {
+                            *y = json!(vec_array);
+                        }
+                    } 
+                    return log_data
+                } None => {
+                    return log_data
+                }
+            }
+        },
+        None => {
+            return log_data
+        }
+    };
+}
+
 /// Utility function that constructs and returns a Map that represents the generated log.
 pub fn construct_log(current_audit_config: &String, pols: &Vec<AuditPolicy>, log_id: u32) -> Map<String, Value>{
     let mut log_data = Map::new();
+    let mut error = Map::new();
+    error.insert("message".to_string(), json!([]));
+    log_data.insert("error".to_string(), json!(error));
 
     // Event Data
     let mut event = Map::new();

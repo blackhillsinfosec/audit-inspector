@@ -36,7 +36,7 @@ audit-inspector.exe
 #### Audit-Only
 Perform no audit configuration changes and log the current configuration.
 ```
-audit-inspector.exe -Z 1
+audit-inspector.exe -Z
 ```
 #### Install Audit Inspector as a Scheduled Task
 The binary will copy itself to the location C:\Windows\audit-inspector.exe and create a scheduled task to execute the binary.  
@@ -122,9 +122,9 @@ Options:
   -X, --audit-kerberos-service-ticket-operation <AUDIT_KERBEROS_SERVICE_TICKET_OPERATION>            [default: 3]
       --audit-other-account-logon-events <AUDIT_OTHER_ACCOUNT_LOGON_EVENTS>                          [default: 4]
   -Y, --audit-kerberos-authentication-service <AUDIT_KERBEROS_AUTHENTICATION_SERVICE>                [default: 3]
-  -Z, --no-configuration <NO_CONFIGURATION>                                                          [default: 0]
+  -Z, --no-configuration
       --install <INSTALL>                                                                            [default: 0]
-      --uninstall <UNINSTALL>                                                                        [default: 0]
+      --uninstall
   -h, --help                                                                                         Print help (see more with '--help')
   -V, --version                                                                                      Print version
 ```

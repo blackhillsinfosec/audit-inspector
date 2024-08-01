@@ -16,7 +16,7 @@
 
 use policies::{AuditPolicy, AuditPolicyTypes};
 mod policies;
-use clap::Parser;
+use clap::{Parser, ArgAction};
 mod registries;
 mod sysmon;
 mod eventlog;
@@ -222,13 +222,17 @@ struct Args {
     audit_kerberos_authentication_service: std::os::raw::c_int,
     
     // Log Only
-    #[arg(short='Z', long, default_value_t = 0)]
-    no_configuration: std::os::raw::c_int,
+    #[arg(short='Z', long)]
+    no_configuration: bool,
     // Install as a scheduled task
     #[arg(long, default_value_t = 0)]
     install: std::os::raw::c_int,
-    #[arg(long, default_value_t = 0)]
-    uninstall: std::os::raw::c_int,
+    #[arg(long)]
+    uninstall: bool,
+    #[cfg(debug_assertions)]
+    #[arg(long)]
+    #[cfg(debug_assertions)]
+    remove: bool,
 }
 
 #[cfg(target_os = "windows")]
@@ -245,8 +249,14 @@ fn main() {
     let start = Instant::now();
 
     let args = Args::parse();
+
+    #[cfg(debug_assertions)]
+    if args.remove {
+        remove_auditing();
+        std::process::exit(0);
+    }
     
-    if args.install > 0 && args.uninstall != 0 {
+    if args.install != 0 && args.uninstall {
         println!("{}", ERR_STYLE.apply_to("The 'install' and 'uninstall' flags cannot be used together."));
         std::process::exit(1);
     }
@@ -265,7 +275,7 @@ fn main() {
                 }
             }
         }
-    } else if args.uninstall != 0 {
+    } else if args.uninstall {
         match install::cleanup_install() {
             Ok(_) => {
                 ()
@@ -280,7 +290,7 @@ fn main() {
         let mut current_audit_config = policies::get_current_audit_configurations();
         
         // Configure Audit Policies
-        if args.no_configuration == 0 {
+        if !args.no_configuration {
             let mismatched_policies = policies::check_policy_values(&current_audit_config, &pols);
             if !mismatched_policies.is_empty(){
                 for pol in mismatched_policies {
@@ -307,6 +317,12 @@ fn main() {
     #[cfg(debug_assertions)]
     println!("Time taken: {:?}", elapsed);
 
+}
+
+#[cfg(debug_assertions)]
+fn remove_auditing() {
+    policies::remove_audit_configurations();
+    registries::remove_audit_registries();
 }
 
 /// Manipulates the policy values to match the desired values pass in via an Args struct.
