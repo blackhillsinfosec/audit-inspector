@@ -154,6 +154,9 @@ The default configurations made by this tool are as follows:
 | Advanced Audit Policy | User Account Management | Success and Failure |
 | Advanced Audit Policy | Security Group Management | Success |
 | Advanced Audit Policy | Credential Validation | Success and Failure |
+
+| Configuration Type | Name | Configuration |
+| --- | --- | --- |
 | Registry | HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\Audit\\ProcessCreationIncludeCmdLine_Enabled | 1 |
 | Registry | HKLM\\SYSTEM\\CurrentControlSet\\Control\\Lsa\\scenoapplylegacyauditpolicy | 1 |
 | Registry | HKLM\\Software\\Policies\\Microsoft\\Windows\\Powershell\\ScriptBlockLogging\\EnableScriptBlockLogging | 1 |
