@@ -131,14 +131,14 @@ Options:
 ## Defaults
 The default configurations made by this tool are as follows:  
 ### All Hosts
-| Configuration Type | Name | Configuration | Event Code | Category |
+| Configuration Type | Name | Configuration | Event ID | Category |
 | --- | --- | --- | --- | --- |
 | Advanced Audit Policy | Security State Change | Success |
 | Advanced Audit Policy | Security System Extension | Success |
 | Advanced Audit Policy | System Integrity | Success and Failure |
 | Advanced Audit Policy | IpSec Driver | Success and Failure |
 | Advanced Audit Policy | Other System Events | Success and Failure |
-| Advanced Audit Policy | Logon | Success and Failure |
+| Advanced Audit Policy | Logon | Success and Failure | 4624 and 4625 | Security |
 | Advanced Audit Policy | Logoff | Success |
 | Advanced Audit Policy | Account Lockout | Failure |
 | Advanced Audit Policy | Special Logon | Success |
