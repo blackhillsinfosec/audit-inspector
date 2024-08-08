@@ -132,7 +132,7 @@ Options:
 The default configurations made by this tool are as follows:  
 ### All Hosts
 | Configuration Type | Name | Configuration | Event Code | Category |
-| --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | Advanced Audit Policy | Security State Change | Success |
 | Advanced Audit Policy | Security System Extension | Success |
 | Advanced Audit Policy | System Integrity | Success and Failure |
