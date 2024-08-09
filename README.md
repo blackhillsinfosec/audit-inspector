@@ -143,17 +143,17 @@ The default configurations made by this tool are as follows:
 | Advanced Audit Policy | Account Lockout | Failure | 4625 | Security |
 | Advanced Audit Policy | Special Logon | Success | 4694 and 4672 | Security |
 | Advanced Audit Policy | Other Logon/Logoff Events | Success and Failure | 4649 and 4778 and 4779 and 4800 and 4801 and 4802 and 4803 and 5378 and 5632 and 5633 | Security |
-| Advanced Audit Policy | Group Memebership | Success | | |
-| Advanced Audit Policy | Filtering Platform Connection | Failure | | |
-| Advanced Audit Policy | Other Object Access Events | Success and Failure | | |
-| Advanced Audit Policy | Process Creation | Success | | |
-| Advanced Audit Policy | Plug and Play Events | Success | | |
-| Advanced Audit Policy | Audit Policy Change | Success | | |
-| Advanced Audit Policy | Authentication Policy Change | Success | | |
-| Advanced Audit Policy | MPSSVC Rule-Level Policy Change | Success | | |
-| Advanced Audit Policy | User Account Management | Success and Failure | | |
-| Advanced Audit Policy | Security Group Management | Success | | |
-| Advanced Audit Policy | Credential Validation | Success and Failure | | |
+| Advanced Audit Policy | Group Memebership | Success | 4627 | Security |
+| Advanced Audit Policy | Filtering Platform Connection | Failure | 5031 and 5155 and 5157 and 5159 | Security |
+| Advanced Audit Policy | Other Object Access Events | Success and Failure | 4691 and 5148 and 5149 and 4698 and 4699 and 4700 and 4701 and 4702 and 5888 and 5889 and 5890 | Security |
+| Advanced Audit Policy | Process Creation | Success | 4688 | Security |
+| Advanced Audit Policy | Plug and Play Events | Success | 6416 and 6419 and 6420 and 6421 and 6422 and 6423 and 6424 | Security |
+| Advanced Audit Policy | Audit Policy Change | Success | 4902 and 4907 and 4904 and 4905 and 4715 and 4719 and 4817 and 4906 and 4908 and 4912 | Security |
+| Advanced Audit Policy | Authentication Policy Change | Success | 4670 and 4706 and 4707 and 4716 and 4713 and 4717 and 4718 and 4739 and 4864 and 4865 and 4866 and 4867  | Security |
+| Advanced Audit Policy | MPSSVC Rule-Level Policy Change | Success | 4944 and 4945 and 4946 and 4947 and 4948 and 4949 and 4950 and 4954 and 4956 | Security |
+| Advanced Audit Policy | User Account Management | Success and Failure | 4720 and 4722 and 4723 and 4724 and 4725 and 4726 and 4738 and 4740 and 4765 and 4766 and 4767 and 4780 and 4781 and 4794 and 4798 and 5376 and 5377| Security |
+| Advanced Audit Policy | Security Group Management | Success | 4731 and 4732 and 4733 and 4734 and 4735 and 4764 and 4799 and 4727 | Security |
+| Advanced Audit Policy | Credential Validation | Success and Failure | 4774 and 4775 and 4776 and 4777 | Security |
 
 | Configuration Type | Name | Configuration |
 | --- | --- | --- |
@@ -185,6 +185,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Contributors
 - Kiersten Gross
+- Neeraj Shetty
 - Ashwin Balasubramanya
 - Tom DeJong
 
