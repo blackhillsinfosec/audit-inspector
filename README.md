@@ -164,15 +164,15 @@ The default configurations made by this tool are as follows:
 | Registry | HKLM\\Software\\Policies\\Microsoft\\Windows\\Powershell\\ModuleLogging\\EnableModuleLogging | 1 |
 | Registry | HKLM\\Software\\Policies\\Microsoft\\Windows\\Powershell\\ModuleLogging\\ModuleNames\\\* | Microsoft.Powershell.\* Microsoft.WSMan.Management ActiveDirectory |
 ### Domain Controllers
-| Configuration Type | Name | Configuration |
-| --- | --- | --- |
-| Advanced Audit Policy | Certification Services | Sucess and Failure |
-| Advanced Audit Policy | Computer Account Management | Sucess |
-| Advanced Audit Policy | Other Account Management Events | Sucess |
+| Configuration Type | Name | Configuration |  Event ID | Category |
+| --- | --- | --- | --- | --- |
+| Advanced Audit Policy | Certification Services | Success and Failure |
+| Advanced Audit Policy | Computer Account Management | Success |
+| Advanced Audit Policy | Other Account Management Events | Success |
 | Advanced Audit Policy | Directory Service Access | Failure |
-| Advanced Audit Policy | Directory Service Changes | Sucess |
-| Advanced Audit Policy | Kerberos Service Ticket Operation | Sucess and Failure |
-| Advanced Audit Policy | Kerberos Authentication Service | Sucess and Failure |
+| Advanced Audit Policy | Directory Service Changes | Success |
+| Advanced Audit Policy | Kerberos Service Ticket Operation | Success and Failure | 4769 and 4770 and 4773 | Security |
+| Advanced Audit Policy | Kerberos Authentication Service | Success and Failure | 4768 and 4771 and 4772 | Security |
 ## Domain Controller Functionality
 This tool can determine through WMI if the host on which it is running is a domain controller or not.  
 Because of this, the tool will only apply the Domain Controller (DC) audit policies when it detects the host is a DC.
