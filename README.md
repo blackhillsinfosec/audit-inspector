@@ -133,15 +133,15 @@ The default configurations made by this tool are as follows:
 ### All Hosts
 | Configuration Type | Name | Configuration | Event ID | Category |
 | --- | --- | --- | --- | --- |
-| Advanced Audit Policy | Security State Change | Success | | |
-| Advanced Audit Policy | Security System Extension | Success | | |
-| Advanced Audit Policy | System Integrity | Success and Failure | | |
-| Advanced Audit Policy | IpSec Driver | Success and Failure | | |
-| Advanced Audit Policy | Other System Events | Success and Failure | | |
-| Advanced Audit Policy | Logon | Success and Failure | 4624 and 4625 | Security |
-| Advanced Audit Policy | Logoff | Success | | |
+| Advanced Audit Policy | Security State Change | Success | 4608 and 4616 and 4621 | Security |
+| Advanced Audit Policy | Security System Extension | Success | 4610 and 4611 and 4614 and 4622 and 4697 | Security |
+| Advanced Audit Policy | System Integrity | Success and Failure | 4612 and 4615 and 4618 and 4816 and 5038 and 5056 and 5062 and 5057 and 5060 and 5061 and 6281 and 6410 | Security |
+| Advanced Audit Policy | IpSec Driver | Success and Failure | 4960 and 4961 and 4962 and 4963 and 4965 and 5479 and 5479 and 5480 and 5483 and 5484 and 5485 | Security |
+| Advanced Audit Policy | Other System Events | Success and Failure | 5024 and 5025 and 5027 and 5028 and 5029 and 5030 and 5032 and 5033 and 5034 and 5035 and 5037 and 5058 and 5059 and 6400 and 6401 and 6402 and 6403 and 6404 and 6405 and 6406 and 6407 and 6408 and 6409 | Security |
+| Advanced Audit Policy | Logon | Success and Failure | 4624 and 4625 and 4648 and 4675 | Security |
+| Advanced Audit Policy | Logoff | Success | 4634 and 4647 | Security |
 | Advanced Audit Policy | Account Lockout | Failure | 4625 | Security |
-| Advanced Audit Policy | Special Logon | Success | 4964 and 4672 | Security |
+| Advanced Audit Policy | Special Logon | Success | 4694 and 4672 | Security |
 | Advanced Audit Policy | Other Logon/Logoff Events | Success and Failure | 4649 and 4778 and 4779 and 4800 and 4801 and 4802 and 4803 and 5378 and 5632 and 5633 | Security |
 | Advanced Audit Policy | Group Memebership | Success | | |
 | Advanced Audit Policy | Filtering Platform Connection | Failure | | |
@@ -185,6 +185,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Contributors
 - Kiersten Gross
+- Ashwin Balasubramanya
 - Tom DeJong
 
 ## License
