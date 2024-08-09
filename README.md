@@ -166,11 +166,11 @@ The default configurations made by this tool are as follows:
 ### Domain Controllers
 | Configuration Type | Name | Configuration |  Event ID | Category |
 | --- | --- | --- | --- | --- |
-| Advanced Audit Policy | Certification Services | Success and Failure |
-| Advanced Audit Policy | Computer Account Management | Success |
-| Advanced Audit Policy | Other Account Management Events | Success |
-| Advanced Audit Policy | Directory Service Access | Failure |
-| Advanced Audit Policy | Directory Service Changes | Success |
+| Advanced Audit Policy | Certification Services | Success and Failure | 
+| Advanced Audit Policy | Computer Account Management | Success | 4741 and 4742 and 4743 | Security |
+| Advanced Audit Policy | Other Account Management Events | Success | 4782 and 4793 | Security |
+| Advanced Audit Policy | Directory Service Access | Failure | 4661 and 4662 | Security |
+| Advanced Audit Policy | Directory Service Changes | Success | 5316 and 5317 and 5318 and 5319 and 5141 | Security |
 | Advanced Audit Policy | Kerberos Service Ticket Operation | Success and Failure | 4769 and 4770 and 4773 | Security |
 | Advanced Audit Policy | Kerberos Authentication Service | Success and Failure | 4768 and 4771 and 4772 | Security |
 ## Domain Controller Functionality
@@ -185,6 +185,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 ## Contributors
 - Kiersten Gross
+- Tom DeJong
 
 ## License
 [GPLv3](https://www.gnu.org/licenses/)
