@@ -133,27 +133,27 @@ The default configurations made by this tool are as follows:
 ### All Hosts
 | Configuration Type | Name | Configuration | Event ID | Category |
 | --- | --- | --- | --- | --- |
-| Advanced Audit Policy | Security State Change | Success |
-| Advanced Audit Policy | Security System Extension | Success |
-| Advanced Audit Policy | System Integrity | Success and Failure |
-| Advanced Audit Policy | IpSec Driver | Success and Failure |
-| Advanced Audit Policy | Other System Events | Success and Failure |
+| Advanced Audit Policy | Security State Change | Success | | |
+| Advanced Audit Policy | Security System Extension | Success | | |
+| Advanced Audit Policy | System Integrity | Success and Failure | | |
+| Advanced Audit Policy | IpSec Driver | Success and Failure | | |
+| Advanced Audit Policy | Other System Events | Success and Failure | | |
 | Advanced Audit Policy | Logon | Success and Failure | 4624 and 4625 | Security |
-| Advanced Audit Policy | Logoff | Success |
-| Advanced Audit Policy | Account Lockout | Failure |
-| Advanced Audit Policy | Special Logon | Success |
-| Advanced Audit Policy | Other Logon/Logoff Events | Success and Failure |
-| Advanced Audit Policy | Group Memebership | Success |
-| Advanced Audit Policy | Filtering Platform Connection | Failure |
-| Advanced Audit Policy | Other Object Access Events | Success and Failure |
-| Advanced Audit Policy | Process Creation | Success |
-| Advanced Audit Policy | Plug and Play Events | Success |
-| Advanced Audit Policy | Audit Policy Change | Success |
-| Advanced Audit Policy | Authentication Policy Change | Success |
-| Advanced Audit Policy | MPSSVC Rule-Level Policy Change | Success |
-| Advanced Audit Policy | User Account Management | Success and Failure |
-| Advanced Audit Policy | Security Group Management | Success |
-| Advanced Audit Policy | Credential Validation | Success and Failure |
+| Advanced Audit Policy | Logoff | Success | | |
+| Advanced Audit Policy | Account Lockout | Failure | 4625 | Security |
+| Advanced Audit Policy | Special Logon | Success | 4964 and 4672 | Security |
+| Advanced Audit Policy | Other Logon/Logoff Events | Success and Failure | 4649 and 4778 and 4779 and 4800 and 4801 and 4802 and 4803 and 5378 and 5632 and 5633 | Security |
+| Advanced Audit Policy | Group Memebership | Success | | |
+| Advanced Audit Policy | Filtering Platform Connection | Failure | | |
+| Advanced Audit Policy | Other Object Access Events | Success and Failure | | |
+| Advanced Audit Policy | Process Creation | Success | | |
+| Advanced Audit Policy | Plug and Play Events | Success | | |
+| Advanced Audit Policy | Audit Policy Change | Success | | |
+| Advanced Audit Policy | Authentication Policy Change | Success | | |
+| Advanced Audit Policy | MPSSVC Rule-Level Policy Change | Success | | |
+| Advanced Audit Policy | User Account Management | Success and Failure | | |
+| Advanced Audit Policy | Security Group Management | Success | | |
+| Advanced Audit Policy | Credential Validation | Success and Failure | | |
 
 | Configuration Type | Name | Configuration |
 | --- | --- | --- |
