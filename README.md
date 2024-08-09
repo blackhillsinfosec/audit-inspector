@@ -166,7 +166,7 @@ The default configurations made by this tool are as follows:
 ### Domain Controllers
 | Configuration Type | Name | Configuration |  Event ID | Category |
 | --- | --- | --- | --- | --- |
-| Advanced Audit Policy | Certification Services | Success and Failure | 
+| Advanced Audit Policy | Certification Services | Success and Failure | 4868 and 4869 and 4870 and 4871 and 4872 and 4873 and 4874 and 4875 and 4876 and 4877 and 4878 and 4879 and 4880 and 4881 and 4882 and 4883 and 4884 and 4885 and 4886 and 4887 and 4888 and 4889 and 4890 and 4891 and 4892 and 4893 and 4894 and 4895 and 4896 and 4897 and 4898 | Security|
 | Advanced Audit Policy | Computer Account Management | Success | 4741 and 4742 and 4743 | Security |
 | Advanced Audit Policy | Other Account Management Events | Success | 4782 and 4793 | Security |
 | Advanced Audit Policy | Directory Service Access | Failure | 4661 and 4662 | Security |
