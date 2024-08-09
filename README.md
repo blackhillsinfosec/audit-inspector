@@ -187,6 +187,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 - Kiersten Gross
 - Ashwin Balasubramanya
 - Tom DeJong
+- Neeraj Shetty
 
 ## License
 [GPLv3](https://www.gnu.org/licenses/)
