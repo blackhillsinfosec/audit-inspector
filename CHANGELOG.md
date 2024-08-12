@@ -136,3 +136,7 @@ The following command line items were converted to boolean flags. These items no
 A feature for removing audit policies was added.  
 This was introduced as a debugging tool.  
 This feature is only available with Rust's developer/debugging mode.  
+
+## [0.1.9] - 2024-08-12
+### Change default of Audit Directory Service Changes
+- Change default configuration to Success and Failure

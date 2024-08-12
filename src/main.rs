@@ -206,7 +206,7 @@ struct Args {
     audit_computer_account_management: std::os::raw::c_int,
     #[arg(short='T', long, default_value_t = 1)]
     audit_other_account_management_events: std::os::raw::c_int,
-    #[arg(short='U', long, default_value_t = 2)]
+    #[arg(short='U', long, default_value_t = 3)]
     audit_directory_service_access: std::os::raw::c_int,
     #[arg(short='W', long, default_value_t = 1)]
     audit_directory_service_changes: std::os::raw::c_int,
