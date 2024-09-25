@@ -46,7 +46,7 @@ audit-inspector.exe --install 1
 ```
 Note that when the install flag is included, any other command line values passed to the binary will be included in the scheduled task. The following example shows how you could combine the install and audit-only flags.
 ```
-audit-inspector.exe --install 1 -Z 1
+audit-inspector.exe --install 1 -Z
 ```
 ### Full Options
 When defining non-default behavior, the command line options are numerous.  
